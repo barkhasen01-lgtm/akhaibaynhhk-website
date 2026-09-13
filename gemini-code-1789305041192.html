@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ахай Баян ХХК | Үйлдвэрлэл, Барилга, Халаалт & Галын Аюулгүй Байдлын Тоног Төхөөрөмж</title>
+    <style>
+        :root {
+            --navy-primary: #0a192f;
+            --navy-secondary: #112240;
+            --accent-blue: #0077ff;
+            --text-light: #e6f1ff;
+            --text-muted: #8892b0;
+            --border-color: #233554;
+            --card-bg: #172a45;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--navy-primary);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(10, 25, 47, 0.95);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 850px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: #ffffff;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Section Layouts */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-blue);
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 850px;
+        }
+
+        /* Catalog Grid with Images */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-body {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+
+        .spec-list {
+            list-style: none;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+
+        .spec-list li {
+            padding: 0.4rem 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-light);
+        }
+
+        /* Key Advantages & Contact Info */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-box {
+            background-color: var(--navy-secondary);
+            padding: 1.8rem;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .info-box h3 {
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+        }
+
+        .info-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Request Quote Form */
+        .rfq-container {
+            background-color: var(--navy-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 3rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            background-color: var(--navy-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.8rem;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        button[type="submit"] {
+            background-color: var(--accent-blue);
+            color: #ffffff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            grid-column: span 2;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--navy-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width, button[type="submit"] {
+                grid-column: span 1;
+            }
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">Ахай <span>Баян</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#about">Компанийн тухай</a></li>
+                    <li><a href="#products">Бүтээгдэхүүнүүд</a></li>
+                    <li><a href="#rfq">Үнийн санал авах</a></li>
+                    <li><a href="#contact">Холбоо барих</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Үйлдвэрлэл, Барилга, Халаалт ба Галын Аюулгүй Байдлын Тоног Төхөөрөмж</h1>
+            <p>2012 оноос хойш ОХУ болон БНХАУ-ын нэр хүндтэй, найдвартай үйлдвэрлэгчидтэй хамтран олон улсын стандартын шаардлага хангасан чанартай бүтээгдэхүүнийг Монголын зах зээлд нийлүүлж байна.</p>
+            <a href="#rfq" class="cta-btn">Үнийн санал болон захиалга өгөх</a>
+        </section>
+
+        <!-- Company Introduction -->
+        <section id="about">
+            <h2 class="section-title">Компанийн танилцуулга</h2>
+            <p class="section-desc">Манай компани нь 2012 онд Монгол Улсад байгуулагдсан бөгөөд үйлдвэрлэл, барилга угсралт, халаалт, галын аюулгүй байдал болон тоног төхөөрөмжийн чиглэлээр чанартай бүтээгдэхүүн нийлүүлэн ажиллаж байна. Бид хөрш орнууд болох ОХУ болон БНХАУ-ын нэр хүндтэй, найдвартай үйлдвэрлэгчид болон ханган нийлүүлэгчидтэй хамтран ажиллаж, олон улсын стандартын шаардлага хангасан бүтээгдэхүүнийг Монголын зах зээлд нийлүүлдэг.</p>
+            
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3>ОХУ ба БНХАУ-ын Хамтын Ажиллагаа</h3>
+                    <p>Нэр хүндтэй үйлдвэрлэгчдийн албан ёсны стандартын дагуу шууд нийлүүлэлт хийнэ.</p>
+                </div>
+                <div class="info-box">
+                    <h3>Чанарын Баталгаа & Гэрчилгээ</h3>
+                    <p>Нийлүүлж буй бүтээгдэхүүн бүр чанарын баталгаа, олон улсын гэрчилгээтэй.</p>
+                </div>
+                <div class="info-box">
+                    <h3>10+ Жилийн Туршлага</h3>
+                    <p>2012 оноос хойш хуримтлуулсан туршлага дээр тулгуурласан найдвартай ханган нийлүүлэлт.</p>
+                </div>
+                <div class="info-box">
+                    <h3>Өрсөлдөхүйц Үнэ</h3>
+                    <p>Хэрэглэгч бүрийн хэрэгцээнд тохирсон чанартай бүтээгдэхүүнийг зохистой үнээр нийлүүлнэ.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Catalog with Photos -->
+        <section id="products">
+            <h2 class="section-title">Манай бүтээгдэхүүний нэр төрөл</h2>
+            <p class="section-desc">Компанийн танилцуулгад дурдагдсан үйлдвэрлэл, барилга, халаалт болон галын аюулгүй байдлын тоног төхөөрөмжүүд:</p>
+
+            <div class="catalog-grid">
+                <!-- Boiler & Heating -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=600&q=80" alt="Халаалтын зуух, бойлер" class="card-img">
+                    <div class="card-body">
+                        <h3>1. Халаалтын зуух & Бойлер</h3>
+                        <p>Ахуйн болон үйлдвэрлэлийн барилга байгууламжийг дулаанаар хангахад зориулагдсан өндөр ашигт коэффиценттэй зуух, бойлерууд.</p>
+                        <ul class="spec-list">
+                            <li><strong>Төрөл:</strong> Халаалтын бойлер, төвлөрсөн зуух</li>
+                            <li><strong>Стандарт:</strong> ОХУ, БНХАУ-ын чанарын гэрчилгээтэй</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bearings -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1618042164219-62c820f10723?auto=format&fit=crop&w=600&q=80" alt="Холхивч" class="card-img">
+                    <div class="card-body">
+                        <h3>2. Холхивч (Bearing)</h3>
+                        <p>Үйлдвэрлэлийн тоног төхөөрөмж, хүнд машин механизм болон автомашинд зориулсан бүх төрлийн өндөр нарийвчлалт холхивчнууд.</p>
+                        <ul class="spec-list">
+                            <li><strong>Төрөл:</strong> Бөмбөлөгт, конус, цилиндр холхивч</li>
+                            <li><strong>Стандарт:</strong> ISO болон ГОСТ стандарт</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Fire Hydrant -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1599818816930-154a1a84f33d?auto=format&fit=crop&w=600&q=80" alt="Галын гидрант" class="card-img">
+                    <div class="card-body">
+                        <h3>3. Галын гидрант</h3>
+                        <p>Галын аюулгүй байдлыг хангах, ус хангамжийн системд холбогдох олон улсын стандартад нийцсэн галын гидрант.</p>
+                        <ul class="spec-list">
+                            <li><strong>Төрөл:</strong> Газар доорх ба газар дээрх гидрант</li>
+                            <li><strong>Баталгаа:</strong> Албан ёсны сертификаттай</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Fire Hose -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80" alt="Галын усны хоолой" class="card-img">
+                    <div class="card-body">
+                        <h3>4. Галын усны хоолой</h3>
+                        <p>Өндөр даралт болон элэгдэлд тэсвэртэй, гал унтраах ажиллагаанд зориулагдсан мэргэжлийн галын усны хоолойн иж бүрдэл.</p>
+                        <ul class="spec-list">
+                            <li><strong>Материал:</strong> Даралт тэсвэрлэх тусгай бүрээстэй</li>
+                            <li><strong>Иж бүрдэл:</strong> Хошуу болон холбогч хэрэгсэлтэй</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Welding Equipment -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="Гагнуурын багаж" class="card-img">
+                    <div class="card-body">
+                        <h3>5. Гагнуурын багаж, тоног төхөөрөмж</h3>
+                        <p>Барилга угсралт болон үйлдвэрлэлийн салбарт зориулсан мэргэжлийн түвшний цахилгаан болон инвертер гагнуурын аппаратууд.</p>
+                        <ul class="spec-list">
+                            <li><strong>Нэр төрөл:</strong> Аппарат, маск, электрод, багаж хэрэгсэл</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Industrial Furnace -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="Халаалтын зуух Furnace" class="card-img">
+                    <div class="card-body">
+                        <h3>6. Халаалтын зуух (Furnace)</h3>
+                        <p>Үйлдвэрлэлийн болон тусгай технологийн горимд зориулсан өндөр хэмийн үйлдвэрлэлийн зуух (furnace) ба тоноглолууд.</p>
+                        <ul class="spec-list">
+                            <li><strong>Зориулалт:</strong> Үйлдвэрлэлийн халаалт, хайлуулалт</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Chimney & Pipes -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Төмөр яндан" class="card-img">
+                    <div class="card-body">
+                        <h3>7. Төмөр яндан & Утааны хоолой</h3>
+                        <p>Халаалтын систем болон зуухны утаа зайлуулах халуунд тэсвэртэй, зэвэрдэггүй чанартай төмөр яндан, хоолойнууд.</p>
+                        <ul class="spec-list">
+                            <li><strong>Материал:</strong> Халуунд тэсвэртэй ган, төмөр</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Other Equipment -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="Барилгын тоног төхөөрөмж" class="card-img">
+                    <div class="card-body">
+                        <h3>8. Бусад барилга & галын тоног төхөөрөмж</h3>
+                        <p>Барилгын угсралт, үйлдвэрлэл, галын аюулгүй байдлын тусгай шаардлагад нийцсэн бусад сүүлийн үеийн тоног төхөөрөмжүүд.</p>
+                        <ul class="spec-list">
+                            <li><strong>Нийлүүлэлт:</strong> Захиалагчийн шаардлагаар</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Request Quote Form -->
+        <section id="rfq">
+            <h2 class="section-title">Үнийн санал болон захиалга авах</h2>
+            <p class="section-desc">Та өөрт шаардлагатай бүтээгдэхүүний тодорхойлолт, тоо хэмжээг илгээн өрсөлдөхүйц үнийн саналыг аваарай.</p>
+
+            <div class="rfq-container">
+                <form onsubmit="handleFormSubmit(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="company">Байгууллага / Иргэний нэр</label>
+                            <input type="text" id="company" required placeholder="Захиалагчийн нэр">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">И-мэйл хаяг / Утасны дугаар</label>
+                            <input type="text" id="email" required placeholder="Энд и-мэйл эсвэл утасаа бичнэ үү">
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Сонгох бүтээгдэхүүн</label>
+                            <select id="category" required>
+                                <option value="">Бүтээгдэхүүний ангилал сонгох</option>
+                                <option value="boiler">Халаалтын зуух, бойлер</option>
+                                <option value="bearing">Холхивч (Bearing)</option>
+                                <option value="hydrant">Галын гидрант</option>
+                                <option value="hose">Галын усны хоолой</option>
+                                <option value="welding">Гагнуурын багаж, тоног төхөөрөмж</option>
+                                <option value="furnace">Халаалтын зуух (Furnace)</option>
+                                <option value="chimney">Төмөр яндан, утааны хоолой</option>
+                                <option value="other">Бусад тоног төхөөрөмж</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Шаардлагатай тоо хэмжээ</label>
+                            <input type="text" id="quantity" placeholder="Жишээ нь: 50 ширхэг / ком">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="details">Техникийн тодорхойлолт болон нэмэлт тайлбар</label>
+                            <textarea id="details" rows="5" required placeholder="Загвар, хэмжээ болон бусад техникийн шаардлагаа энд бичнэ үү..."></textarea>
+                        </div>
+                        <button type="submit">Үнийн санал авах хүсэлт илгээх</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title">Холбоо барих</h2>
+            <p class="section-desc">Албан ёсны харилцаа холбоо ба захиалга авах сувгууд:</p>
+            
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3>Утасны дугаар</h3>
+                    <p
+                        <a href="tel:+97699108627" class="contact-link">+976 99108627</a><br>
+                        <a href="tel:+97699042363" class="contact-link">+976 99042363</a>
+                    </p>
+                </div>
+                <div class="info-box">
+                    <h3>Албан ёсны и-мэйл</h3>
+                    <p>
+                        <a href="mailto:info@ahaibayn.hhk@gmail.com" class="contact-link">info@ahaibayn.mn</a>
+                    </p>
+                </div>
+                <div class="info-box">
+                    <h3>Хаяг байршил</h3>
+                    <p>Монгол Улс, Улаанбаатар хот</p>
+                </div>
+                <div class="info-box">
+                    <h3>Ажлын цаг</h3>
+                    <p>Даваа - Баасан: 09:00 - 18:00</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Ахай Баян ХХК. Бүх эрх хуулиар хамгаалагдсан.</p>
+    </footer>
+
+    <script>
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            alert('Үнийн санал авах хүсэлтийг хүлээн авлаа. Ахай Баян ХХК-ийн мэргэжилтэн тантай удахгүй холбогдох болно.');
+        }
+    </script>
+</body>
+</html>
